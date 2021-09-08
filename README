@@ -2,30 +2,34 @@ Imagine "TBFSBS", a text-based format for storing biological sequences with a nu
 
 Requirements:
 
-Do not install any extra Python packages, import default libraries only (hint: you don't need to implement your own commandline arg parser, it's included as a default library)
+Do not install any extra Python packages, import default libraries only (hint: you don't need to implement your own commandline arg parser, 
+it's included as a default library)
 Provide the solution as an executable Python script that can be executed as: ./parse.py MySequences.txt
 Publish the solution on GitHub or any other git-based software hosting site
 Don't worry too much about documentation or extendability, the goal is to get the job done using simple clean code
 (Bonus 1) Allow parsing multiple files, print filename before parsing each input file.        
-(Bonus 2) Implement a TBFSBS writer that writes the TBFSBS sequences back into an output file, with configurable maximum length of the sequence line (line wrap). Usage ./parse.py MySequences.txt --output MyOutput.txt --wrap 80
+(Bonus 2) Implement a TBFSBS writer that writes the TBFSBS sequences back into an output file, with configurable maximum length 
+of the sequence line (line wrap). Usage ./parse.py MySequences.txt --output MyOutput.txt --wrap 80
  
   
 Implementation:
 
-main script: parse.py (covers all requirements, for last Bonus I implemented function that writes TBFSBS_headers (in the same format as prints in console) and line wrapped sequences
+Main script: parse.py (covers all requirements, for last Bonus I implemented function that writes TBFSBS_headers 
+(in the same format as prints in console) and line wrapped sequences
+For reading command line arguments I used argprase and sys module from standard library.
 
 Input_files for reading: MySequences.txt, MySequences1.txt 
 
 Output_files with the results of line wrapping: MyOutput.txt, MyOutput1.txt
 
 Examples of Execution:
-		./parse.py MySequences.txt
-	   	./parse.py MySequences.txt MySequences1.txt 
-
-	   ./parse.py MySequences.txt   --output MyOutput.txt   --wrap 80
-	   ./parse.py MySequences1.txt  --output MyOutput1.txt  --wrap 80
-
-
+		1) to print in console the results of parsing TBFSBS_headers and the length of each group of sequences
+			./parse.py MySequences.txt
+	   		./parse.py MySequences.txt MySequences1.txt 
+		
+		2) to write to provided output file TBFSBS_header and the result of line wrapping
+	   		./parse.py MySequences.txt   --output MyOutput.txt   --wrap 80
+	   		./parse.py MySequences1.txt  --output MyOutput1.txt  --wrap 80
 					
 Additional script: wrapper_Sequences.py (Because in last task for Bonus I couldn't find information about writing
 to file headers, additionally implemented 2 cases of writing to file only line wrapped sequences (without info about their headers):
@@ -36,8 +40,9 @@ Input_files for reading: MySequences.txt, MySequences1.txt
 
 Output_files with results: MyOutput_WrapJoinSequences.txt, MyOutput_WrapSequences.txt
 
-Example of Execution: 
+Examples of Execution: 
+		./wrapper_Sequences.py MySequences1.txt  --output MyOutput_WrapJoinSequences.txt --join true --wrap 80
 		./wrapper_Sequences.py MySequences1.txt  --output MyOutput_WrapSequences.txt   --wrap 80
-	   	./wrapper_Sequences.py MySequences1.txt  --output MyOutput_WrapJoinSequences.txt --join true --wrap 80
+	   	
 
 
