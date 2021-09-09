@@ -38,10 +38,10 @@ def TBFSBS_Header(line):
 # Function prints in console parsed TBFSBS_header and the length of Sequence.
 def printParse_SequenceLength():
     files = read_Args()
+    start_flag = True
     for file in files:
         print("filename: {}\n".format(file))
         count_chars = 0
-        start_flag = True
         with open(file, "r") as read_file:
             while line := read_file.readline():
                 if line.startswith('%'):
